@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Item(models.Model):
     name = models.CharField(max_length=50)
@@ -33,7 +34,7 @@ class History(models.Model):
 
     def __unicode__(self):
         return "%s %s %s on %s : %s Condition" % (
-            self.borrower.name,
+            self.borrower.first_name,
             self.get_action_display(),
             self.item.name,
             self.date.strftime("%a %B %d, %Y - %I:%M%p"),
