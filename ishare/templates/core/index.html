@@ -8,5 +8,13 @@
 </head>
 <body>
     <h3>My Items</h3>
+    {% for item in items %}
+    <p>{{item}}</p>
+    <blockquote>
+        {% for history in item.history_set.all %}
+        <p>{{history}}
+        {% endfor %}
+    </blockquote>
+    {% endfor %}
 </body>
 </html>
