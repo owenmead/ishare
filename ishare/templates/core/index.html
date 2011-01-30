@@ -5,9 +5,7 @@
     {% for item in my_items %}
     <p><a href="{% url item_detail item.id %}">{{item}}</a> - {% include "core/subs/item_status.html" %}</p>
     <blockquote>
-        {% for history in item.history_set.all %}
-        <p>{{history}}
-        {% endfor %}
+        {% include "core/subs/history_list.html" %}
     </blockquote>
     {% endfor %}
 </div>
