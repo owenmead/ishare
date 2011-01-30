@@ -99,3 +99,4 @@ INSTALLED_APPS = (
 )
 
 AUTH_PROFILE_MODULE = "userprofile.UserProfile"
+LOGIN_REDIRECT_URL = "/"
