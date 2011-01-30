@@ -1,6 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class ItemContainer(models.Model):
+    name = models.CharField(max_length=50)
+    items = models.ManyToManyField("Item")
+
+    owner = models.ForeignKey(User, related_name='owner')
+    sharedWith = models.ManyToManyField(User)
+
+    def __unicode__(self):
+        return self.name
+
 class Item(models.Model):
     name = models.CharField(max_length=50)
     owner = models.ForeignKey(User)
