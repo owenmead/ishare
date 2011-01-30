@@ -6,13 +6,22 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>iSahre</title>
 	<style type="text/css" media="screen">
-        div { float: left; margin-right: 3em; border: 1px solid #666; padding: 1em; }
+        div.top_bar { text-align: right; background-color: #CCC; padding: 0.5em 0.75em; margin-bottom: 1em; line-height: 1.5em; border-radius: 5px; }
+        div.top_bar h1 { margin: 0pt; float: left; font-size: 1.5em; }
+
+        div.main_content div { float: left; margin-right: 3em; border: 1px solid #666; padding: 1em; }
        .status_not_available { color: #d00; }
        .status_available { color: #0a0; }
 	</style>
 </head>
 <body>
+    <div class="top_bar">
+        <h1>Share Stuff</h1>
+        {{ user.first_name }} {{ user.last_name }} <a href="{% url logout %}">Logout</a>
+    </div>
+    <div class="main_content">
     {% block main_content %}
     {% endblock %}
+    </div>
 </body>
 </html>
