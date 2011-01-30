@@ -5,21 +5,40 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>iSahre</title>
+	<style type="text/css" media="screen">
+	   div {
+	       float: left;
+	       margin-right: 3em;
+	       border: 1px solid #666;
+	       padding: 1em;
+	   }
+	</style>
 </head>
 <body>
-    <h3>My Items</h3>
-    {% for item in my_items %}
-    <p>{{item}}</p>
-    <blockquote>
-        {% for history in item.history_set.all %}
-        <p>{{history}}
+    <div class="my_items">
+        <h2>My Items</h2>
+        {% for item in my_items %}
+        <p>{{item}}</p>
+        <blockquote>
+            {% for history in item.history_set.all %}
+            <p>{{history}}
+            {% endfor %}
+        </blockquote>
         {% endfor %}
-    </blockquote>
-    {% endfor %}
-    <hr>
-    <h3>Friend Items</h3>
-    {% for item in friend_items %}
-    <p>{{item}} - {{item.owner}} - </p>
-    {% endfor %}
+    </div>
+
+    <div class="friend_items">
+        <h2>Friend Items</h2>
+        {% for item in friend_items %}
+        <p>{{item}} -
+           {{item.owner}} -
+
+            {% if item.is_available %}
+            Available
+            {% else %}
+            Checked Out
+            {% endif %}</p>
+        {% endfor %}
+    </div>
 </body>
 </html>
