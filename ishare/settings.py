@@ -94,6 +94,8 @@ INSTALLED_APPS = (
 
     'userprofile',
     'core',
+
+    'south',
 )
 
 AUTH_PROFILE_MODULE = "userprofile.UserProfile"
