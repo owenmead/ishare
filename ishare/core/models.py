@@ -15,6 +15,9 @@ class Item(models.Model):
     name = models.CharField(max_length=50)
     owner = models.ForeignKey(User)
 
+    class Meta:
+        ordering = ["name"]
+
     def is_available(self):
         for history in self.history_set.order_by('-date')[:1]:
             # If last action was returned, then it's available
