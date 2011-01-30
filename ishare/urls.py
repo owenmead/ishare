@@ -6,6 +6,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     (r'^$', 'core.views.index', {}, 'index'),
     (r'^item/(\d+)/$', 'core.views.item_detail', {}, 'item_detail'),
+    (r'^item/add/$', 'core.views.item_add', {}, 'item_add'),
 
     (r'^accounts/login/$', 'django.contrib.auth.views.login', {}, 'login'),
     (r'^accounts/logout/$', 'django.contrib.auth.views.logout_then_login', {}, 'logout'),

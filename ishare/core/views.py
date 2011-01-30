@@ -1,8 +1,11 @@
 from django.template import RequestContext
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from ishare.core.models import Item
+
 
 @login_required
 def index(request):
@@ -25,3 +28,13 @@ def item_detail(request, item_id):
         'item' : item
     }
     return render_to_response('core/item_detail.html', context, context_instance=RequestContext(request))
+
+@login_required
+def item_add(request):
+    user = request.user
+
+    # Create a 'blank' item to then be edited
+    new_item = Item(name="New Item", owner=user)
+    new_item.save()
+
+    return HttpResponseRedirect(reverse('item_detail', args=[new_item.id]))
