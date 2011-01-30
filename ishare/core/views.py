@@ -1,7 +1,7 @@
 from django.template import RequestContext
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
-
+from django.db.models import Q
 from ishare.core.models import Item
 
 @login_required
@@ -18,7 +18,10 @@ def index(request):
 def item_detail(request, item_id):
     user = request.user
 
+    # Ensure it is shared with the user, or they own the item
+    item = get_object_or_404(Item.objects.filter(Q(itemcontainer__sharedWith=user)|Q(owner=user)), pk=item_id)
+
     context = {
-        'item' : Item.objects.get(pk=item_id)
+        'item' : item
     }
     return render_to_response('core/item_detail.html', context, context_instance=RequestContext(request))
