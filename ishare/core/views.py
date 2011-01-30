@@ -23,7 +23,7 @@ def item_detail(request, item_id):
 
     # Ensure it is shared with the user, or they own the item
     context = {
-        'item' : get_object_or_404(Item.objects.filter(Q(itemcontainer__sharedWith=user)|Q(owner=user)), pk=item_id)
+        'item' : get_object_or_404(Item.objects.filter(Q(itemcontainer__sharedWith=user)|Q(owner=user)).distinct(), pk=item_id)
     }
     return render_to_response('core/item_detail.html', context, context_instance=RequestContext(request))
 
