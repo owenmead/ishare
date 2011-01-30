@@ -3,7 +3,7 @@
 <div class="my_items">
     <h2>My Items</h2>
     {% for item in my_items %}
-    <p>{{item}} - {% include "core/subs/item_status.html" %}</p>
+    <p><a href="{% url item_detail item.id %}">{{item}}</a> - {% include "core/subs/item_status.html" %}</p>
     <blockquote>
         {% for history in item.history_set.all %}
         <p>{{history}}
@@ -15,7 +15,7 @@
 <div class="friend_items">
     <h2>Friend Items</h2>
     {% for item in friend_items %}
-    <p>{{item}} - {{item.owner}} - {% include "core/subs/item_status.html" %}</p>
+    <p><a href="{% url item_detail item.id %}">{{item}}</a> - {{item.owner}} - {% include "core/subs/item_status.html" %}</p>
     {% endfor %}
 </div>
 {% endblock %}
