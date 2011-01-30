@@ -3,4 +3,6 @@
     <a href="/">Home</a>
     <h2>{{ item }}</h2>
     {% include "core/subs/history_list.html" %}
+    <hr>
+    <a href="{% url item_delete item.id %}">Delete Item</a>
 {% endblock %}
