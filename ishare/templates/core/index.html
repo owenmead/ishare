@@ -12,14 +12,15 @@
 	       border: 1px solid #666;
 	       padding: 1em;
 	   }
+       .status_not_available { color: #d00; }
+       .status_available { color: #0a0; }
 	</style>
 </head>
 <body>
     <div class="my_items">
         <h2>My Items</h2>
         {% for item in my_items %}
-        <p>{{item}} -
-            {% if item.is_available %}Available{% else %}Checked Out{% endif %}</p>
+        <p>{{item}} - {% include "core/item_status.html" %}</p>
         <blockquote>
             {% for history in item.history_set.all %}
             <p>{{history}}
@@ -31,10 +32,7 @@
     <div class="friend_items">
         <h2>Friend Items</h2>
         {% for item in friend_items %}
-        <p>{{item}} -
-           {{item.owner}} -
-
-            {% if item.is_available %}Available{% else %}Checked Out{% endif %}</p>
+        <p>{{item}} - {{item.owner}} - {% include "core/item_status.html" %}</p>
         {% endfor %}
     </div>
 </body>
