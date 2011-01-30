@@ -9,6 +9,6 @@ def index(request):
     user = request.user
 
     context = {
-        'items' : Item.objects.filter(owner=user),
+        'my_items' : Item.objects.filter(owner=user),
     }
     return render_to_response('core/index.html', context, context_instance=RequestContext(request))

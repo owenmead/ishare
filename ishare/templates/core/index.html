@@ -8,7 +8,7 @@
 </head>
 <body>
     <h3>My Items</h3>
-    {% for item in items %}
+    {% for item in my_items %}
     <p>{{item}}</p>
     <blockquote>
         {% for history in item.history_set.all %}
