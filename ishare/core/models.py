@@ -6,7 +6,7 @@ class ItemContainer(models.Model):
     items = models.ManyToManyField("Item")
 
     owner = models.ForeignKey(User, related_name='owner')
-    sharedWith = models.ManyToManyField(User)
+    sharedWith = models.ManyToManyField(User, blank=True)
 
     def __unicode__(self):
         return self.name
