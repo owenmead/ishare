@@ -16,5 +16,10 @@
         {% endfor %}
     </blockquote>
     {% endfor %}
+    <hr>
+    <h3>Friend Items</h3>
+    {% for item in friend_items %}
+    <p>{{item}} - {{item.owner}} - </p>
+    {% endfor %}
 </body>
 </html>
