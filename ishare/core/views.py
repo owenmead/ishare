@@ -36,3 +36,11 @@ def item_add(request):
     new_item.save()
 
     return HttpResponseRedirect(reverse('item_detail', args=[new_item.id]))
+
+@login_required
+def item_delete(request, item_id):
+    user = request.user
+
+    get_object_or_404(Item.objects.filter(owner=user), pk=item_id).delete()
+
+    return HttpResponseRedirect(reverse('index'))
