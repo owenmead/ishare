@@ -13,3 +13,12 @@ def index(request):
         'friend_items' : Item.objects.filter(itemcontainer__sharedWith=user)
     }
     return render_to_response('core/index.html', context, context_instance=RequestContext(request))
+
+@login_required
+def item_detail(request, item_id):
+    user = request.user
+
+    context = {
+        'item' : Item.objects.get(pk=item_id)
+    }
+    return render_to_response('core/item_detail.html', context, context_instance=RequestContext(request))
