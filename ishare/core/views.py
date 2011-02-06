@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from ishare.core.models import Item
 
-
 @login_required
 def index(request):
     user = request.user
