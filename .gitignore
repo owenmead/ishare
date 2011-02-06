@@ -6,3 +6,4 @@ lib
 *.pyc
 ishare_db
 src
+.DS_Store
